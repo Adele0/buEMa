@@ -1,24 +1,22 @@
-import App from '../App'
+import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
 
 const home = r => require.ensure([], () => r(require('../pages/home/Home')), 'home')
 const login = r => require.ensure([], () => r(require('../pages/login/Login')), 'login')
 
-export default [{
-      path: '/',
-      component: App, //顶层路由，对应index.html
-      children: [
-        //地址为空时跳转home页面
-        {
-          path: '',
-          redirect:'/home'
-        },
-        {
-          path: '/home',
-          component: home
-        },
-        {
-          path: '/login',
-          component: login
-        }
-      ]
-}]
+const routes = [
+  {
+    path: '/',
+    component: home,
+  },
+  {
+    path: '/login',
+    component: login,
+  }
+]
+
+export default new Router({
+   routes,
+})
