@@ -1,4 +1,4 @@
-function CanvasBG () {
+function CanvasBG (timeId) {
   var Canvas = document.getElementById('canvas');
   var ctx = Canvas.getContext('2d');
 
@@ -85,7 +85,7 @@ function CanvasBG () {
     }
   }
 
-  setInterval(function() {
+  var timeId = setInterval(function() {
     ctx.clearRect(0, 0, Canvas.width, Canvas.height);
 
     var time = new Date().getTime();
